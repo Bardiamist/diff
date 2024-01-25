@@ -25,7 +25,21 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import 'reactotron-react-native';
+import Reactotron from 'reactotron-react-native';
+
+Reactotron.configure({
+  name: 'app',
+})
+  .useReactNative()
+  .connect();
+
+console.log('console log 1');
+Reactotron.log('reactotron log 1');
+
+setTimeout(() => {
+  console.log('console log 2');
+  Reactotron.log('reactotron log 2');
+}, 1);
 
 type SectionProps = PropsWithChildren<{
   title: string;
