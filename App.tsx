@@ -7,9 +7,11 @@
 
 import React, {useState, useCallback, useLayoutEffect} from 'react';
 import {StyleSheet, View, Button} from 'react-native';
+// import Animated from 'react-native-reanimated';
 import {
+  Gesture,
   GestureHandlerRootView,
-  PanGestureHandler,
+  GestureDetector,
 } from 'react-native-gesture-handler';
 
 function App(): React.JSX.Element {
@@ -32,10 +34,16 @@ function App(): React.JSX.Element {
 
   if (isVisible) {
     for (let index = 0; index < 1000; index += 1) {
+      const pan = Gesture.Pan()
+        .activeOffsetX(10)
+        .onBegin(() => {})
+        .onUpdate(() => {})
+        .onFinalize(() => {});
+
       rows.push(
-        <PanGestureHandler key={index}>
+        <GestureDetector key={index} gesture={pan}>
           <View />
-        </PanGestureHandler>,
+        </GestureDetector>,
       );
     }
   }
