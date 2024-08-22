@@ -1,16 +1,30 @@
+import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
+  Button,
+  SafeAreaView,
+  NativeModules,
 } from 'react-native';
 
-const styles = StyleSheet.create({
+const {
+  Locales,
+} = NativeModules;
 
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 100,
+  },
 });
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView>
-      
+    <SafeAreaView style={styles.container}>
+      <Button
+        title="Change language to zh-Hans"
+        onPress={() => {
+          Locales.setLanguage();
+        }}
+      />
     </SafeAreaView>
   );
 }
