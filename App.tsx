@@ -16,6 +16,9 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {
+  Image,
+} from 'expo-image';
 
 import {
   Colors,
@@ -72,6 +75,10 @@ function App(): React.JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+        <Image
+          source={'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'}
+          style={{ width: 272, height: 92 }}
+        />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
