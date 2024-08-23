@@ -5167,6 +5167,7 @@ __metadata:
     babel-jest: "npm:^29.6.3"
     eslint: "npm:^8.19.0"
     expo: "npm:51.0.30"
+    expo-image: "npm:1.12.14"
     jest: "npm:^29.6.3"
     prettier: "npm:2.8.8"
     react: "npm:18.3.1"
@@ -5884,6 +5885,15 @@ __metadata:
   peerDependencies:
     expo: "*"
   checksum: 10c0/9c7b63b3a3ee89bfcdbc1704451019b956b451208f0eca3bb1e57b53dd5dcdfb4d080d423583b92f864889a2a5d7624985c0e5103c54b36b8daf813471696b41
+  languageName: node
+  linkType: hard
+
+"expo-image@npm:1.12.14":
+  version: 1.12.14
+  resolution: "expo-image@npm:1.12.14"
+  peerDependencies:
+    expo: "*"
+  checksum: 10c0/f2d7a6d9cd04805f9ef64fc020fbb8f849bfdbcb7563cc0a8402a4c99504f8328aec72f8368b17f7c47f55b1f86c798f63655fa757cab92984eea1d54f721c2d
   languageName: node
   linkType: hard
 
