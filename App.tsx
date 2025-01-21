@@ -24,7 +24,7 @@ const useHighLoad = (difficulty: number) => {
 
   return (
     <SectionList
-      initialNumToRender={1000}
+      initialNumToRender={difficulty}
       removeClippedSubviews={false}
       sections={[{ title: 'Section 1', data }]}
       renderItem={({ item }) => (
@@ -35,7 +35,7 @@ const useHighLoad = (difficulty: number) => {
 };
 
 function ProfileScreen() {
-  const sectionList = useHighLoad(1000);
+  const sectionList = useHighLoad(500);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -45,14 +45,33 @@ function ProfileScreen() {
   );
 }
 
-function Tab1() {
+function Tab1Screen1() {
+  const navigation = useNavigation();
+
+  const sectionList = useHighLoad(1000);
+
+  return (
+    <View style={{ marginTop: 100, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Tab1 Screen 1</Text>
+      <Button
+        title="Go to Tab 1 screen 2"
+        onPress={() => {
+          navigation.navigate('Tab1Screen2');
+        }}
+      />
+      {sectionList}
+    </View>
+  );
+}
+
+function Tab1Screen2() {
   const navigation = useNavigation();
 
   const sectionList = useHighLoad(3000);
 
   return (
     <View style={{ marginTop: 100, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Tab1 Screen</Text>
+      <Text>Tab1 Screen 2</Text>
       <Button
         title="Go to Profile"
         onPress={() => {
@@ -63,6 +82,25 @@ function Tab1() {
     </View>
   );
 }
+
+const Tab1StackNavigator = createStackNavigator({
+  screenOptions: {
+    headerStyle: {
+      backgroundColor: 'red',
+    },
+    cardStyle: {
+      backgroundColor: 'red',
+    },
+  },
+  screens: {
+    Tab1Screen1: {
+      screen: Tab1Screen1,
+    },
+    Tab1Screen2: {
+      screen: Tab1Screen2,
+    },
+  },
+});
 
 function Tab2() {
   return (
@@ -75,29 +113,15 @@ function Tab2() {
 const MainTabsNavigator = createBottomTabNavigator({
   screenOptions: {
     headerShown: false,
-    tabBarStyle: {
-      backgroundColor: 'red',
-      borderColor: 'red',
-    },
-    sceneStyle: {
-      backgroundColor: 'red',
-    },
   },
   screens: {
-    Tab1,
+    Tab1StackNavigator,
     Tab2,
   },
 });
 
 const MyStack = createStackNavigator({
-  screenOptions: {
-    headerStyle: {
-      backgroundColor: 'red',
-    },
-    cardStyle: {
-      backgroundColor: 'red',
-    },
-  },
+  screenOptions: {},
   screens: {
     MainTabs: {
       screen: MainTabsNavigator,
