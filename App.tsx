@@ -35,7 +35,7 @@ const useHighLoad = (difficulty: number) => {
 };
 
 function ProfileScreen() {
-  const sectionList = useHighLoad(500);
+  const sectionList = useHighLoad(700);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -113,6 +113,9 @@ function Tab2() {
 const MainTabsNavigator = createBottomTabNavigator({
   screenOptions: {
     headerShown: false,
+    tabBarStyle: {
+      backgroundColor: 'red',
+    },
   },
   screens: {
     Tab1StackNavigator,
@@ -121,7 +124,6 @@ const MainTabsNavigator = createBottomTabNavigator({
 });
 
 const MyStack = createStackNavigator({
-  screenOptions: {},
   screens: {
     MainTabs: {
       screen: MainTabsNavigator,
@@ -129,7 +131,17 @@ const MyStack = createStackNavigator({
         headerShown: false,
       },
     },
-    Profile: ProfileScreen,
+    Profile: {
+      screen: ProfileScreen,
+      options: {
+        headerStyle: {
+          backgroundColor: 'red',
+        },
+        cardStyle: {
+          backgroundColor: 'red',
+        },
+      },
+    },
   },
 });
 
