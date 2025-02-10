@@ -55,6 +55,18 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
+function run({ a }) {
+  a();
+}
+
+if (true) {
+  function a() { console.log('1'); }
+  run({ a });
+} else {
+  function a() { console.log('2'); }
+  run({ a });
+}
+
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
