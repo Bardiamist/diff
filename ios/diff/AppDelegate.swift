@@ -1,10 +1,10 @@
 import UIKit
 import React
-import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import Expo
 
 @main
-class AppDelegate: RCTAppDelegate {
+class AppDelegate: EXAppDelegateWrapper {
   override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     self.moduleName = "diff"
     self.dependencyProvider = RCTAppDependencyProvider()
