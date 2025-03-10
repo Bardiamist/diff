@@ -25,9 +25,19 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import {
+  NativeBooks,
+} from './specs/NativeBooks';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
+
+setTimeout(() => {
+  console.log({
+    isRemoved: NativeBooks.removeBook(),
+  });
+}, 2000);
 
 function Section({children, title}: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';

@@ -10,6 +10,8 @@
 		0C80B921A6F3F58F76C31292 /* libPods-diff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-diff.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
+		77A2FD3B2D7EA1420035A8F7 /* BooksHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A2FD3A2D7EA1420035A8F7 /* BooksHelper.swift */; };
+		77BF32D92D7E9EDE00A7BEC1 /* RCTNativeBooks.mm in Sources */ = {isa = PBXBuildFile; fileRef = 77BF32D82D7E9EDE00A7BEC1 /* RCTNativeBooks.mm */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		DC66637FE26B693DCC46527F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
@@ -23,6 +25,10 @@
 		5709B34CF0A7D63546082F79 /* Pods-diff.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-diff.release.xcconfig"; path = "Target Support Files/Pods-diff/Pods-diff.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-diff.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-diff.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = diff/AppDelegate.swift; sourceTree = "<group>"; };
+		77A2FD3A2D7EA1420035A8F7 /* BooksHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksHelper.swift; sourceTree = "<group>"; };
+		77BF32D62D7E9EDE00A7BEC1 /* diff-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "diff-Bridging-Header.h"; sourceTree = "<group>"; };
+		77BF32D72D7E9EDE00A7BEC1 /* RCTNativeBooks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTNativeBooks.h; sourceTree = "<group>"; };
+		77BF32D82D7E9EDE00A7BEC1 /* RCTNativeBooks.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTNativeBooks.mm; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = diff/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -44,6 +50,7 @@
 			children = (
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
+				77BF32D62D7E9EDE00A7BEC1 /* diff-Bridging-Header.h */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
@@ -60,6 +67,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		77BF32D52D7E9EB000A7BEC1 /* NativeBooks */ = {
+			isa = PBXGroup;
+			children = (
+				77BF32D72D7E9EDE00A7BEC1 /* RCTNativeBooks.h */,
+				77BF32D82D7E9EDE00A7BEC1 /* RCTNativeBooks.mm */,
+				77A2FD3A2D7EA1420035A8F7 /* BooksHelper.swift */,
+			);
+			path = NativeBooks;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +87,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				77BF32D52D7E9EB000A7BEC1 /* NativeBooks */,
 				13B07FAE1A68108700A75B9A /* diff */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -131,7 +149,7 @@
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1620;
 					};
 				};
 			};
@@ -247,6 +265,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
+				77A2FD3B2D7EA1420035A8F7 /* BooksHelper.swift in Sources */,
+				77BF32D92D7E9EDE00A7BEC1 /* RCTNativeBooks.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +295,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = diff;
+				SWIFT_OBJC_BRIDGING_HEADER = "diff-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -302,6 +323,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = diff;
+				SWIFT_OBJC_BRIDGING_HEADER = "diff-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -376,10 +398,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -448,10 +467,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
