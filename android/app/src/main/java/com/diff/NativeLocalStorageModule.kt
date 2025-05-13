@@ -2,7 +2,7 @@ package com.diff
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nativelocalstorage.NativeLocalStorageSpec
+import com.diff.NativeLocalStorageSpec
 import com.facebook.react.bridge.ReactApplicationContext
 
 class NativeLocalStorageModule(reactContext: ReactApplicationContext) : NativeLocalStorageSpec(reactContext) {
