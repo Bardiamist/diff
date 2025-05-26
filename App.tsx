@@ -15,6 +15,11 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
+import {
+  AutoEnvAttributes,
+  ReactNativeLDClient,
+} from '@launchdarkly/react-native-client-sdk';
 
 import {
   Colors,
@@ -127,5 +132,29 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
+(async () => {
+  SecureStore.setItem('a', 'b', {
+    requireAuthentication: true,
+  });
+
+  SecureStore.getItem('a');
+
+  const launchDarkly = new ReactNativeLDClient(
+    'KEY',
+    AutoEnvAttributes.Disabled,
+  );
+
+  try {
+    await launchDarkly.identify({
+      kind: 'user',
+      key: '0',
+    }, {
+      waitForNetworkResults: true,
+    });
+  } catch (exception) {
+    console.error(exception);
+  }
+})();
 
 export default App;
