@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import { useState } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import { View, Button, TextInput } from 'react-native';
 import { createStaticNavigation, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,7 +13,7 @@ const HomeScreen = () => {
     <View style={{ flex: 1, backgroundColor: 'ligth-gray', justifyContent: 'center' }}>
       <TextInput
         value={value}
-        style={{ height: 44, backgroundColor: 'red' }}
+        style={{ height: 44, backgroundColor: 'gray' }}
         onChangeText={setValue}
       />
       <Button
@@ -40,13 +40,23 @@ const ProfileScreen = () => {
 const SettingsScreen = () => {
   const [value, setValue] = useState('');
 
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: () => (
+        <TextInput
+          style={{ width: 300, height: 44, backgroundColor: 'red' }}
+          value={value}
+          onChangeText={setValue}
+        />
+      ),
+    });
+  }, [value, navigation]);
+
   return (
     <View style={{ flex: 1, backgroundColor: 'green', justifyContent: 'center' }}>
-      <TextInput
-        style={{ height: 44, backgroundColor: 'red' }}
-        value={value}
-        onChangeText={setValue}
-      />
+
     </View>
   );
 };
@@ -56,6 +66,9 @@ const MyStack = createStackNavigator({
     Home: HomeScreen,
     Profile: ProfileScreen,
     Settings: SettingsScreen,
+  },
+  screenOptions: {
+    detachPreviousScreen: false,
   },
 });
 
