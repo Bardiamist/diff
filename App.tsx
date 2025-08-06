@@ -7,6 +7,9 @@
 
 import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { init } from '@amplitude/analytics-react-native';
+
+init('API_KEY');
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
