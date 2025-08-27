@@ -5,41 +5,65 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { useCallback } from 'react';
 import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+  NavigationContainer,
+} from '@react-navigation/native';
+import {
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
+import {
+  useFocusEffect,
+} from '@react-navigation/native';
+import {
+  enableFreeze,
+} from 'react-native-screens';
+
+enableFreeze(true);
+
+const Tab = createBottomTabNavigator();
+
+const LightScreen = () => {};
+
+const HeavyScreen = () => {
+  useFocusEffect(useCallback(() => {
+    let i = 0;
+
+    while (i < 100000000) {
+      i++;
+    }
+  }, []));
+};
+
+const TabNavigatorScreen = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Light screen 1"
+        component={LightScreen}
+      />
+      <Tab.Screen
+        name="Light screen 2"
+        component={LightScreen}
+      />
+      <Tab.Screen
+        name="Light screen 3"
+        component={LightScreen}
+      />
+      <Tab.Screen
+        name="Heavy screen"
+        component={HeavyScreen}
+      />
+    </Tab.Navigator>
+  );
+};
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <TabNavigatorScreen />
+    </NavigationContainer>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
