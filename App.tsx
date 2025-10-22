@@ -24,6 +24,8 @@ function App() {
 }
 
 function AppContent() {
+  performance.now();
+
   const safeAreaInsets = useSafeAreaInsets();
 
   return (
