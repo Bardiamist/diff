@@ -5,11 +5,10 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { useState } from 'react';
+import { StatusBar, useColorScheme, View, Text, Pressable } from 'react-native';
 import {
   SafeAreaProvider,
-  useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
 function App() {
@@ -24,22 +23,42 @@ function App() {
 }
 
 function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
+  const [isGreen, setIsGreen] = useState(false);
+
+  let rippleColor;
+  let pressableStyle;
+
+  if (isGreen) {
+    rippleColor = '#00AA00';
+    pressableStyle = {
+      height: 44,
+      backgroundColor: '#00AA00'
+    };
+  } else {
+    rippleColor = '#AA0000';
+    pressableStyle = {
+      height: 44,
+      backgroundColor: '#AA0000'
+    };
+  }
 
   return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
+    <View style={{
+      flex: 1,
+      paddingTop: 100,
+    }}>
+        <Text>Button background color must be: {isGreen ? 'Green' : 'Red'}</Text>
+        <Pressable
+          style={pressableStyle}
+          android_ripple={{
+            color: rippleColor,
+          }}
+          onPress={() => {
+            setIsGreen(!isGreen);
+          }}
+        />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
