@@ -10,9 +10,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native/new-app-screen": "0.81.5",
+    "@sentry/react-native": "^8.0.0",
     "react": "19.1.0",
     "react-native": "0.81.5",
-    "@react-native/new-app-screen": "0.81.5",
     "react-native-safe-area-context": "^5.5.2"
   },
   "devDependencies": {
